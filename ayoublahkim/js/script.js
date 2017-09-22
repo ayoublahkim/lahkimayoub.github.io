@@ -43,47 +43,7 @@ function validContact(element) {
     return true;
 }
 
-/* ---------------------------------------------------------------------- */
-/*	Map */
-/* ---------------------------------------------------------------------- */
 
-var init = false,
-    position = new google.maps.LatLng(34.017574, -5.011995),
-    map,
-    info;
-
-function initMaps() {
-    init = true;
-    var mapProp = {
-        center:position,
-        zoom:12,
-        mapTypeId:google.maps.MapTypeId.ROADMAP
-    };
-    map=new google.maps.Map(document.getElementById("map"),mapProp);
-    var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(34.017574, -5.011995),
-        map: map
-    });
-    info = new google.maps.InfoWindow({
-        content:"<div style='width:200px; height: 30px;'>4T Avenue Victor Le Gorgeu</br>29200 Brest - France<div>"
-    });
-    google.maps.event.addListener(marker,'click',function() {
-        map.setZoom(16);
-        map.setCenter(marker.getPosition());
-        info.open(map,marker);
-        google.maps.event.trigger(map, 'resize');
-    });
-
-}
-function maps() {
-    if(init == false) {
-        initMaps();
-    }
-    info.close();
-    google.maps.event.trigger(map, "resize");
-    map.setCenter(position);
-    map.setZoom(12);
-}
 
 /* ---------------------------------------------------------------------- */
 /*	Popup */
@@ -150,7 +110,7 @@ function langues() {
 $(document).ready(function () {
     langues();
     if(window.location.href.indexOf("#contact") > -1) {
-       initMaps();
+       
     }
     $('.youtube').fancybox({
         padding : 0
@@ -158,7 +118,6 @@ $(document).ready(function () {
 });
 $(window).resize(function() {
     if (init) {
-        google.maps.event.trigger(map, "resize");
     }
 });
 jQuery(document).ready(function () {
@@ -182,7 +141,6 @@ jQuery(document).ready(function () {
 
     $( "#content" ).tabs({
         activate: function( event, ui ) {
-            maps();
             var color = $('div[id="content"] ul .ui-tabs-active > a').css('background-color');
             $('meta[name=theme-color]').attr("content", color);
             $('meta[name=msapplication-navbutton-color]').attr("content", color);

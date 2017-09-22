@@ -48,7 +48,7 @@ function validContact(element) {
 /* ---------------------------------------------------------------------- */
 
 var init = false,
-    position = new google.maps.LatLng(48.397618, -4.495422),
+    position = new google.maps.LatLng(34.017574, -5.011995),
     map,
     info;
 
@@ -61,7 +61,7 @@ function initMaps() {
     };
     map=new google.maps.Map(document.getElementById("map"),mapProp);
     var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(48.397618, -4.495422),
+        position: new google.maps.LatLng(34.017574, -5.011995),
         map: map
     });
     info = new google.maps.InfoWindow({
